@@ -1,1 +1,1 @@
-## Hackerrak challanges problem solution 
+## Hackerrnak challanges problem solution 
