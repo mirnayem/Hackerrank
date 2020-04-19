@@ -1,23 +1,56 @@
-<!-- Conditional Statements -->$_COOKIE
-
 <?php
+class Person{
+   public $age;
+   public function __construct($initialAge)
+   {
+          // Add some more code to run some checks on initialAge
+       if ($initialAge > 0)
+      {
+            $this->age = $initialAge;
+      }else
+      {
+       print("Age is not valid, setting age to 0.\n");
+       $this->age = 0;
+      }
 
+    }
+   public  function amIOld()
+   {
+            // Do some computations in here and print out the correct statement to the console 
+             if ($this->age < 13)
+             {
+                print("You are young.\n");
 
+             }elseif($this->age < 18)
+             {
+                print("You are a teenager.\n");
+             }else
+             {
+                print("You are old.\n");
+             }
+  
 
-$stdin = fopen("php://stdin", "r");
-
-fscanf($stdin, "%d\n", $N);
-if($N%2==1)
-{
-echo 'Weird';
-}elseif($N%2==0 && $N>=2 && $N <=5)
-{
-    echo 'Not Weird';
-}elseif($N%2==0 && $N >=6 && $N <= 20)
-{
-    echo 'Weird';
-}elseif($N%2==0 && $N > 20)
-{
-    echo 'Not Weird';
+    }
+    public  function yearPasses()
+    {
+          // Increment the age of the person in here
+          $this->age++;
+    }
+   
+      
 }
-fclose($stdin);
+
+$T = intval(fgets(STDIN));
+ for($i=0;$i<$T;$i++)
+ {
+     $age=intval(fgets(STDIN));
+     $p=new Person($age);
+     $p->amIOld();
+     for($j=0;$j<3;$j++){
+         $p->yearPasses();
+     }
+     $p->amIOld();
+     echo "\n";
+         
+ }
+?>
