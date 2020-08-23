@@ -13,7 +13,7 @@ class Solution{
         if($root==null){
             return new Node($data);
         }
-        else{
+        else{            
             if($data<=$root->data){
                 $cur=$this->insert($root->left,$data);
                 $root->left=$cur;
@@ -26,19 +26,21 @@ class Solution{
         }
     }
 
-	public function getHeight($root){
+	public function levelOrder($root){
       //Write your code here
-       $heightLeft = 0;
-       $heightRight = 0;
+        $arr = [];
 
-    if ($root->left != null) {
-        $heightLeft = $this->getHeight($root->left) + 1;
-    }
-    if ($root->right != null) {
-        $heightRight = $this->getHeight($root->right) + 1;
-    }
-
-  return ($heightLeft > $heightRight ? $heightLeft : $heightRight);
+        $arr[] = $root;
+        while(!empty($arr)) {
+            $node = array_shift($arr);
+            if(!empty($node->left)) {
+                $arr[] = $node->left;
+            }
+            if(!empty($node->right)) {
+                $arr[] = $node->right;
+            }
+            echo $node->data." ";
+        }
     }
 
 }//End of Solution
@@ -49,7 +51,6 @@ while($T-->0){
     $data=intval(fgets(STDIN));
     $root=$myTree->insert($root,$data);
 }
-$height=$myTree->getHeight($root);
-echo $height;
+$myTree->levelOrder($root);
 ?>
     
